@@ -1,0 +1,30 @@
+@import '~open-color/open-color';
+
+.comment {
+	border: 1px solid $oc-gray-4;
+	margin-bottom: 3px;
+	border-radius: 5px;
+	padding: 5px;
+	padding-left:10px;
+	
+	&_author {
+		font-size: 18px;
+		font-weight: bold;
+	}
+	&_date_wrapper {
+		float: right;
+	}
+	&_date {
+		font-size: 14px;
+		color: $oc-gray-6
+	}
+	&_trash {
+		margin-right: 5px;
+		width: 16px;
+		height: 16px;
+	}
+	&_text {
+		margin: 5px;
+		font-size: 14px;
+	}
+}

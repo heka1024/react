@@ -1,0 +1,17 @@
+@import '~open-color/open-color';
+
+.info {
+	font-size:18px;
+	
+	&_row {
+		border-top: 1px solid $oc-gray-4;
+		margin: {
+			top: 5px;
+			bottom: 5px;
+		}
+	}
+	&_hd {
+		padding-left: 15px;
+		font-weight: bold;
+	}	
+}

@@ -1,0 +1,28 @@
+@import '~open-color/open-color';
+
+.menu {
+	margin-bottom: 3px;
+	border-radius: 5px;
+	padding: 5px;
+	padding-left:10px;
+	&_row {
+		border-top: 1px solid $oc-gray-4;
+		margin: {
+			top: 5px;
+			bottom: 5px;
+		}
+	}
+	&_hd {
+		font-size: 18px;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+	&_title {
+		font-size: 16px;
+		font-weight: bold;
+	}
+	&_price {
+		font-size: 12px;
+		color: $oc-gray-6
+	}
+}

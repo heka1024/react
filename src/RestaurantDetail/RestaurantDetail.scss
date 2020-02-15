@@ -1,0 +1,11 @@
+@import '~open-color/open-color';
+
+.restaurant {
+	&_name {
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+	}
+	&_wrapper {
+	}
+}

@@ -1,0 +1,17 @@
+@import '~open-color/open-color';
+.menu_item {
+	border: 1px solid $oc-gray-4;
+	margin-bottom: 3px;
+	border-radius: 5px;
+	padding: 5px;
+	padding-left:10px;
+	
+	&_title {
+		font-size: 18px;
+		font-weight: bold;
+	}
+	&_price {
+		font-size: 14px;
+		color: $oc-gray-6
+	}
+}
