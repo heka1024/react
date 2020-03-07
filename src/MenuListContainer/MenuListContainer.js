@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import MenuList from './MenuList';
+import React, { Component } from 'react'
+import MenuList from './MenuList'
+import { Link } from 'react-router-dom'
 import './MenuListContainer.scss'
 
 class MenuListContainer extends Component {
 	render() {
-		const name = '학생회관', location = '학생회관 9층'
-		const menus = [
-			{name: '라면', price: '3000'},
-			{name: '국밥', price: '4000'},
-			{name: '진라면 매운맛', price: '2400'},
-		]
+		const { restaurant = {}, menus = [] } = this.props
 		
 		return(
 			<div className= "menu_list_container">
-				<p className = "menu_list_container_title"> { name } </p>
-				<p className = "menu_list_container_location"> { location } </p>
-				<hr/>
+				
+				<p className = "menu_list_container_title">
+					<Link to={`/restaurant/${restaurant.id}`}> { restaurant.name } </Link>
+				</p>
+				
+				<p className = "menu_list_container_location"> { restaurant.location } </p>
 				<MenuList menus = {menus}/>
+				<hr/>
 			</div>
 		)
 	}
 }
 
-export default MenuListContainer;
+export default MenuListContainer

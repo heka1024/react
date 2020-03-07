@@ -1,0 +1,46 @@
+{
+	"menus": [
+		{
+			"name": "라면", 
+			"price": "3000",
+			"time": "d",
+			"date": "2020-02-29",
+			"restaurant_name": "3식당"
+		},
+		{
+			"name": "라면", 
+			"price": "3000",
+			"time": "l",
+			"date": "2020-02-29",
+			"restaurant_name": "3식당"
+		},
+		{
+			"name": "국밥", 
+			"price": "4000",
+			"time": "b",
+			"date": "2020-02-29",
+			"restaurant_name": "3식당"
+		},
+		{
+			"name": "진라면 매운맛", 
+			"price": "2400",
+			"time": "l",
+			"date": "2020-02-29",
+			"restaurant_name": "학관"
+		},
+		{
+			"name": "돼지국밥", 
+			"price": "2330",
+			"time": "b",
+			"date": "2020-03-01",
+			"restaurant_name": "학관"
+		},
+		{
+			"name": "볶음밥", 
+			"price": "3000",
+			"time": "b",
+			"date": "2020-03-01",
+			"restaurant_name": "3식당"
+		}
+	]
+}

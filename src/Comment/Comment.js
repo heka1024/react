@@ -11,7 +11,7 @@ class Comment extends Component {
 			<div className = "comment">
 				<span className = "comment_author"> { comment.author }</span>
 				<span className="comment_date_wrapper">
-					{ user.username == comment.author && trash_box }
+					{ user.username === comment.author && trash_box }
 					<span className = "comment_date"> { comment.date } </span>
 				</span>
 				<p className = "comment_text"> { comment.text } </p>

@@ -1,0 +1,22 @@
+@import '~open-color/open-color';
+
+.signup {
+	&_title {
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+	}
+	&_input {
+		margin-bottom: 5px;
+	}
+	&_submit {
+		border: 1px solid $oc-lime-9;
+		margin-top: 5px;
+		width: 90%;
+		color: $oc-lime-9;
+		&:hover {
+			background-color: $oc-lime-9;
+			color: white;
+		}
+	}
+}

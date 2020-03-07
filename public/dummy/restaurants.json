@@ -1,0 +1,41 @@
+{
+	"restaurants": [
+		{
+			"id": "1",
+			"name": "3식당",
+			"location": "75동",
+			"number": "02-997-7488",
+			"lat": "37.45647",
+			"lng": "126.94851",
+			"likes": ["heka1024", "asdf"],
+			"comments": [
+				{
+					"author": "heka1024",
+					"date": "20-01-24",
+					"text": "학관조아"
+				},
+				{
+					"author": "asd123",
+					"date": "20-01-24",
+					"text": "마시쏘"
+				}
+			]
+		},
+		{
+			"id": "2",
+			"name": "학관",
+			"location": "학생회관",
+			"number": "02-224-7488",
+			"lat": "37.41647",
+			"lng": "126.91851",
+			"likes": ["heka1024"],
+			"comments": [
+				{
+					"author": "heka1024",
+					"date": "20-01-24",
+					"text": "여기조아"
+				}
+			]
+		}
+	]
+}

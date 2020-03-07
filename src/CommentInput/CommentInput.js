@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-import { Col, Row, Form } from 'react-bootstrap'
+import { Col, Row, Form, Button } from 'react-bootstrap'
+import './CommentInput.scss'
 
 const CommentInput = () => (
 	<div className = "info">
 		<Form>
-			<Col md = {8}>
-				<Form.Control type="text" 
+			<Row>
+			<Col xs = {9}>
+				<Form.Control style={{marginLeft:'10px'}} inline type="text" 
 					placeholder="댓글을 입력하세요" />
 			</Col>
-			<Col md = {4}>
-				<Button variant="primary" type="submit">
+			<Col xs = {3}>
+				<Button inline variant="primary" type="submit">
 					입력
 				</Button>
 			</Col>
+			</Row>
 		</Form>
 	</div>
 )

@@ -3,12 +3,11 @@ import MenuItem from './MenuItem'
 
 class MenuList extends Component {
 	render() {
-		const { menus } = this.props
+		const { menus = [] } = this.props
 		const styles =  { listStyleType: 'none', padding: '0' }
 		const menu_list = menus.map((menu, idx) => (
 			<li key={idx}><MenuItem name = {menu.name} price = {menu.price}/></li>
 		))
-		console.log(menu_list)
 
 		return(
 			<div className = "menu_list">

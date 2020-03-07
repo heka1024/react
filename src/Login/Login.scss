@@ -1,0 +1,37 @@
+@import '~open-color/open-color';
+
+.login {
+	&_title {
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+	}
+	&_input {
+		margin-bottom: 5px;
+	}
+	&_submit {
+		margin-top: 15px;
+		width: 90%;
+		&:hover {
+			background-color: $oc-lime-9;
+		}
+	}
+}
+
+.signup_link {
+	color: $oc-lime-9;
+	&:hover {
+		color: white;
+	}
+}
+
+.link_to_signup {
+	border: 1px solid $oc-lime-9;
+	margin-top: 5px;
+	width: 90%;
+	color: $oc-lime-9;
+	&:hover {
+		background-color: $oc-lime-9;
+		color: white;
+	}
+}
