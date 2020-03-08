@@ -7,7 +7,7 @@ class SignUpView extends Component {
 		return (
 			<ContentWrapper>
 				<center>
-					<SignUp/>
+					<SignUp history = {this.props.history}/>
 				</center>
 			</ContentWrapper>
 		)

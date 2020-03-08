@@ -1,25 +1,72 @@
 import React, { Component } from 'react'
 import { Col, Button, Form, FormControl } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { observer, inject } from 'mobx-react'
+import Api from '../Api'
 import './SignUp.scss'
 
-const SignUp = () => {
-	return(
-		<Col md ={6}>
-			<div className="login">
-				<p className="login_title">회원가입</p>
-				<hr/>
-				<Form>
-					<Form.Control className="signup_input" type="text" placeholder="아이디 입력" />
-					<hr/>
-					<Form.Control className="signup_input" type="text" placeholder="비밀번호" />
-					<Form.Control className="signup_input" type="text" placeholder="비밀번호 확인" />
+@inject(root => ({
+  signup: root.SignupStore,
+  auth: root.AuthStore,
+}))
 
-					<Button className = "signup_submit" variant="outline-info" type="submit"> 가입하기 </Button>
-				</Form>
-			</div>
-		</Col>
-	)
+@observer
+class SignUp extends Component {
+  handleClick = () => {
+    const { signup, auth, history } = this.props
+    signup.signup()
+      .then(res => {
+        auth.setState(
+          signup.username,
+          signup.password1
+        )
+        auth.login()
+        history.push('/')
+      })
+  }     
+  render() {
+    const { signup } = this.props 
+    return(
+      <Col md ={6}>
+        <div className="login">
+          <p className="login_title">회원가입</p>
+          <hr/>
+          <Form>
+            <Form.Control 
+              className="signup_input"
+              onChange = { signup.setUsername }
+              type="text"  placeholder="아이디 입력" 
+            />
+            <hr/>
+            <Form.Control 
+              className="signup_input" 
+              onChange = { signup.setPassword1 }
+              type="password" placeholder="비밀번호" 
+            />
+            <Form.Control 
+              className="signup_input" 
+              onChange = { signup.setPassword2 }
+              type="password" placeholder="비밀번호 확인" 
+            />
+
+            <Button
+              onClick = { this.handleClick }
+              className = "signup_submit" 
+              variant="outline-info"> 
+              가입하기 
+            </Button>
+            
+            { 
+              signup.error &&
+              <div className="error">
+                잘못된 입력입니다.  
+              </div>
+            }
+          </Form>
+        </div>
+      </Col>
+    )
+  }
 }
 
 export default SignUp;

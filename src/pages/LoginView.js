@@ -7,7 +7,7 @@ class LoginView extends Component {
 		return (
 			<ContentWrapper>
 				<center>
-					<Login/>
+					<Login history = {this.props.history}/>
 				</center>
 			</ContentWrapper>
 		)

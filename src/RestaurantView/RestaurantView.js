@@ -3,29 +3,22 @@ import { CardGroup, CardColumns, CardDeck } from 'react-bootstrap'
 import axios from 'axios'
 import RestaurantCard from '../RestaurantCard'
 import './RestaurantView.scss'
+import Api from '../Api'
 
 class RestaurantView extends Component {
-	state = {
-		restaurants: []
-	}
+	state = { restaurants: [] }
+
 	componentDidMount() {
 		this._getRestaurant() 
 	} 
 	_getRestaurant = () => {
-		const url  ='http://rest-api.run.goorm.io/restaurants/'
-		// const url = '/dummy/restaurants.json'
-		
-		axios.get(url)
-			.then(res => {
-				const data = res.data.results 
-				console.log(data)
-				this.setState({
-					restaurants: data
-				})
-			})
-			.catch(e => {
-				console.log(e)
-			})
+    console.log(Api)
+		Api.getRestaurants()
+		.then(res => {
+      this.setState({
+        restaurants: res 
+      })
+		})
 	}
 
 	render() {

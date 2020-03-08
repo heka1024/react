@@ -1,49 +1,56 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-import { Col, Button, Form, FormControl } from 'react-bootstrap'
+import { Col, Button, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Login.scss'
+import { observer, inject } from 'mobx-react'
 
-class Login extends Component {
-  state = {
-    id: '',
-    password: ''
+@inject(root => ({
+  auth: root.AuthStore
+}))
+
+@observer
+class Login extends Component {  
+  handleClick = () => {
+    const { signup, auth, history } = this.props
+    auth.login()
+      .then(res => {
+        if (res) {
+          history.push('/')
+        }
+      })
   }
-
-  handleIdChange = e => {this.setState({id: e.target.value})}
-  handlePasswordChange = e => {this.setState({password: e.target.value})}
   
-  handleSubmit = e => {
-    const url = 'http://rest-api.run.goorm.io/rest-auth/login/'
-    axios.post(url, {
-        username: this.state.id,
-        password: this.state.password
-    })
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err => console.log(err))
+  handleLogout = () => {
+    const { signup, auth, history } = this.props
+    auth.logout()
+      .then(res => {
+        if (res) {
+          history.push('/')
+        }
+      })
   }
 
 	render() {
-    return(
-      <Col md ={6}>
-        <div className="login">
+    const { auth } = this.props
+    
+    const when_logout = (
+      <div className="login">
           <p className="login_title">로그인</p>
           <hr/>
           <Form>
             <Form.Control 
-              onChange = {this.handleIdChange}
+              onChange = { auth.setUsername }
               className="login_input" type="text" placeholder="아이디" 
             />
             <Form.Control 
-              onChange = {this.handlePasswordChange}
-              className="login_input"  type="password" placeholder="비밀번호" 
+              onChange = { auth.setPassword }
+              className="login_input" type="password" placeholder="비밀번호" 
             />
+            
             <Button 
-              onClick = {this.handleSubmit}
-              className = "login_submit" > 
-              제출 
+              onClick = { this.handleClick }
+              className = "login_login" > 
+              로그인 
             </Button>
 
             <Button className="link_to_signup" variant="outline-info">
@@ -51,9 +58,22 @@ class Login extends Component {
             </Button>
           </Form>
         </div>
+    )
+    
+    const when_login = (
+      <Button 
+        onClick = { this.handleLogout }
+        className = "login_logout" > 
+        로그아웃 
+      </Button>
+    )
+
+    return(
+      <Col md ={6}>
+        { auth.logged_in ? when_login : when_logout }
       </Col>
     )
   }
 }
 
-export default Login;
+export default Login
