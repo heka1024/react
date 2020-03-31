@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import RestaurantDetail from './RestaurantDetail';
-import { Row, Col } from 'react-bootstrap'
+import React from 'react';
+import { Col } from 'react-bootstrap'
 import AppNavbar from './AppNavbar'
 import Footer from './Footer'
-import Login from './Login'
-import CommentInput from './CommentInput/CommentInput'
-import { Route } from 'react-router-dom'
 
 const ContentWrapper = ({ children }) => (
 	<div className = "content-wrapper">

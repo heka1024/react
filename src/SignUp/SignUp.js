@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Col, Button, Form, FormControl } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Col, Button, Form } from 'react-bootstrap'
 import { observer, inject } from 'mobx-react'
-import Api from '../Api'
 import './SignUp.scss'
 
 @inject(root => ({
@@ -16,12 +14,14 @@ class SignUp extends Component {
     const { signup, auth, history } = this.props
     signup.signup()
       .then(res => {
-        auth.setState(
-          signup.username,
-          signup.password1
-        )
-        auth.login()
-        history.push('/')
+        if (res) {
+          auth.setState(
+            signup.username,
+            signup.password1
+          )
+          auth.login()
+          history.push('/')
+        }
       })
   }     
   render() {

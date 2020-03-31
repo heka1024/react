@@ -22,6 +22,9 @@
 		margin-right: 5px;
 		width: 16px;
 		height: 16px;
+    &:hover {
+      cursor: pointer;
+    }
 	}
 	&_text {
 		margin: 5px;

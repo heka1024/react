@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
+import React from 'react';
 import './Footer.scss'
-
-const user = { username: '' }
 
 const Footer = () => {
 	const items = ['샤밥', '|', 'heka1024'].map((item, i) =>

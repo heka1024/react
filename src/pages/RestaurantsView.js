@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Today from '../Today'
 import RestaurantView from '../RestaurantView'
 import ContentWrapper from '../ContentWrapper'
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { observable, action } from 'mobx'
 import Api from '../Api'
 
@@ -7,6 +6,7 @@ class AuthStore {
   @observable username = ''
   @observable password = ''
   @observable error = false
+  @observable token = ''
 
   constructor(root) {
     this.root = root
@@ -22,6 +22,7 @@ class AuthStore {
     console.log(pnew)
     this.username = pnew
   }
+  
   @action setPassword = e => {
     const pnew = e.target.value
     console.log(pnew)
@@ -32,48 +33,57 @@ class AuthStore {
     this.password = ''
     this.error = false
   }
+
   @action login = () => {
     return Api.login(this.username, this.password)
-      .then(res => {
-        console.log(res)
-        if (res.status === 200) {
-          this.logged_in = !this.logged_in
-          return new Promise((resolve, reject) => {
-            resolve(true)  
-          })
-        } else {
-          console.log(res)
-          this.error = true
-          return new Promise((resolve, reject) => {
-            resolve(false)  
-          })
-        }
-      }).catch(err => {
-        return new Promise((resolve, reject) => {
-          resolve(false)  
-        })
-      })
+      .then(this.login_without_err, this.with_err)
   }
+  
+  @action.bound
+  login_without_err(res) {
+    if (res.status === 200) {
+      this.token = res.data.key
+      this.logged_in = !this.logged_in
+      const ret = new Promise((resolve, reject) => {
+        resolve(true)  
+      })
+      console.log(ret)
+      return ret
+    } else {
+      console.log(res.status)
+      this.error = true
+      return new Promise((resolve, reject) => {
+        resolve(false)  
+      })
+    }
+  }
+
+  @action.bound
+  with_err(err) {
+    console.log(err)
+    return new Promise((resolve, reject) => {
+      resolve(false)  
+    })
+  }
+  
   @action logout = () => {
     return Api.logout()
-      .then(res => {
-        if (res.status === 200) {
-          this.logged_in = !this.logged_in
-          this.reset()
-          return new Promise((resolve, reject) => {
-            resolve(true)  
-          })
-        } else {
-          return new Promise((resolve, reject) => {
-            resolve(false)  
-          })
-        }
-      }).catch(err => {
-        console.log(err)
-        return new Promise((resolve, reject) => {
-          resolve(false)  
-        })
+      .then(this.logout_without_err, this.with_err)
+  }
+  
+  @action.bound
+  logout_without_err(res) {
+    if (res.status === 200) {
+      this.logged_in = !this.logged_in
+      this.reset()
+      return new Promise((resolve, reject) => {
+        resolve(true)  
       })
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve(false)  
+      })
+    }
   }
 }
 

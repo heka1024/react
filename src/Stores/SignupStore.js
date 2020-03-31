@@ -1,4 +1,3 @@
-import React from 'react'
 import { observable, action } from 'mobx'
 import Api from '../Api'
 
@@ -55,7 +54,6 @@ class SignupStore {
       return new Promise((resolve, reject) => {
         resolve(false)  
       })
-      console.log("err", err.response)
     })
   }
 }

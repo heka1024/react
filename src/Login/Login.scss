@@ -30,6 +30,10 @@
 		color: white;
 	}
 }
+.error {
+  color: $oc-red-7;
+  font-weight: bold;
+}
 
 .link_to_signup {
 	border: 1px solid $oc-lime-9;

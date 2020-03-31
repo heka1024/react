@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import { observer, inject } from 'mobx-react'
 import { 
   MenuView, 
   LoginView, 
@@ -9,7 +10,21 @@ import {
   AccountView
 } from './pages'
 
+@inject(root => ({
+  RestaurantStore: root.RestaurantStore,
+  MenuStore: root.MenuStore
+}))
+
+@observer
 class App extends Component {
+  componentDidMount() {
+    const { MenuStore, RestaurantStore } = this.props
+    MenuStore.getMenus()
+    RestaurantStore.getRestaurants()
+    RestaurantStore.getAll()
+
+  }
+  
 	render() {
 		return (
 			<div>

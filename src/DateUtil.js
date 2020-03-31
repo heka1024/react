@@ -14,4 +14,10 @@ function date2query(d) {
 	return `${year}-${mon}-${date}`
 }
 
-export { date2query, date2string }
+function dateChange(date, n) {
+  let pnew = date
+  pnew.setDate(pnew.getDate() + n)
+  return pnew
+}
+
+export { date2query, date2string, dateChange }

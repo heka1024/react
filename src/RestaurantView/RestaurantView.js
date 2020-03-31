@@ -1,36 +1,32 @@
 import React, { Component } from 'react'
-import { CardGroup, CardColumns, CardDeck } from 'react-bootstrap'
-import axios from 'axios'
+import { CardDeck, Col } from 'react-bootstrap'
+import { observer, inject } from 'mobx-react'
 import RestaurantCard from '../RestaurantCard'
 import './RestaurantView.scss'
-import Api from '../Api'
 
-class RestaurantView extends Component {
-	state = { restaurants: [] }
+@inject(root => ({
+  RestaurantStore: root.RestaurantStore
+}))
 
-	componentDidMount() {
-		this._getRestaurant() 
-	} 
-	_getRestaurant = () => {
-    console.log(Api)
-		Api.getRestaurants()
-		.then(res => {
-      this.setState({
-        restaurants: res 
-      })
-		})
-	}
-
+@observer
+class RestaurantView extends Component {  
 	render() {
+    const { RestaurantStore } = this.props
+
 		return(
-			<ul className="cards">
-				{ this.state.restaurants.map(res => (
-						<li className="cards-item" key={res.name}>
-							<RestaurantCard restaurant={res} className="cards-item"/>
-						</li>
-					)
-				)}
-			</ul>
+			<CardDeck tyle={{display: 'flex', flexDirection: 'row'}}>
+				{ 
+          RestaurantStore.array.map((res, idx) => (
+              <Col md={4} key={idx}>
+              <RestaurantCard 
+                id={res.id}
+                restaurant={res} 
+              />
+              </Col>
+					  )
+          )
+        }
+			</CardDeck>
 		)
 	}
 }

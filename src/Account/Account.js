@@ -11,7 +11,7 @@ import './Account.scss'
 @observer
 class Account extends Component {
   handleLogout = () => {
-    const { signup, auth, history } = this.props
+    const { auth, history } = this.props
     auth.logout()
       .then(res => {
         if (res) {

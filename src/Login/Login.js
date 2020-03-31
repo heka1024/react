@@ -11,17 +11,19 @@ import { observer, inject } from 'mobx-react'
 @observer
 class Login extends Component {  
   handleClick = () => {
-    const { signup, auth, history } = this.props
-    auth.login()
-      .then(res => {
+    const { auth, history } = this.props
+    auth.login().then(
+      res => { 
         if (res) {
-          history.push('/')
+          history.goBack() 
         }
-      })
+      },
+      err => { console.log(err) }
+    )
   }
   
   handleLogout = () => {
-    const { signup, auth, history } = this.props
+    const { auth, history } = this.props
     auth.logout()
       .then(res => {
         if (res) {
@@ -57,6 +59,12 @@ class Login extends Component {
               <Link to="/signup"><div className="signup_link"> 회원가입 </div></Link>
             </Button>
           </Form>
+          { 
+            auth.error && 
+            <div className ="error">
+                아이디나 비밀번호가 잘못되었습니다.
+            </div>
+          }
         </div>
     )
     
