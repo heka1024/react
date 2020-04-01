@@ -13,20 +13,20 @@ import './MenuListContainer.scss'
 }))
 
 class MenuListContainer extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    const a = this.props.restaurant.liked, b = nextProps.restaurant.liked
-    if (a.length !== b.length) {
-      return true
-    } else {
-      const len = a.length
-      for (let i = 0; i < len; i++) {
-        if (a[i] !== b[i]) {
-          return true
-        }
-      }
-      return false
-    }
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   const a = this.props.restaurant.liked, b = nextProps.restaurant.liked
+  //   if (a.length !== b.length) {
+  //     return true
+  //   } else {
+  //     const len = a.length
+  //     for (let i = 0; i < len; i++) {
+  //       if (a[i] !== b[i]) {
+  //         return true
+  //       }
+  //     }
+  //     return false
+  //   }
+  // }
   
   getStyle = () => {
     const c = this.props.restaurant.liked

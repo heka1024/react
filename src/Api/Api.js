@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 //const base = 'http://rest-api.run.goorm.io'
-const base = 'http://34.64.79.242:8000'
+// const base = 'http://34.64.79.242:8000'
+const base = '/api'
 
 const Api = {
   like: (res_id, token) => {
