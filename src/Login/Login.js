@@ -9,7 +9,11 @@ import { observer, inject } from 'mobx-react'
 }))
 
 @observer
-class Login extends Component {  
+class Login extends Component {
+  componentWillUnmount() {
+    this.props.auth.pageOut()
+  }
+  
   handleClick = () => {
     const { auth, history } = this.props
     auth.login().then(

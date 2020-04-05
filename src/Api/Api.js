@@ -5,6 +5,26 @@ import axios from 'axios'
 const base = '/api'
 
 const Api = {
+  deleteUser: (token) => {
+    const url = `${base}/delete_user/`
+    return axios({
+      url: url,
+      method: "post",
+      headers: {'Authorization': `Token ${token}`}
+    }).then(
+      res => new Promise((resolve, reject) => { resolve(res) }),
+      err => new Promise((resolve, reject) => { resolve(err) })
+    )
+  },
+  userlist: () => {
+    const url = `${base}/users/`
+    return axios.get(url).then(
+      res => new Promise((resolve, reject) => { 
+        resolve(res.data.results.map(i => i.username)) 
+      }),
+      err => new Promise((resolve, reject) => { resolve(err) })
+    )
+  },
   like: (res_id, token) => {
     const url = `${base}/like/${res_id}/`
     console.log(url)

@@ -18,19 +18,21 @@ class AppNavbar extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto" as="ul">
-            <Nav.Link as="li"><Link to="/" className="toplink">메뉴</Link></Nav.Link>
-            <Nav.Link as="li"><Link to="/restaurants" className="toplink">식당</Link></Nav.Link>
+            <Link to="/" className="toplink"><Nav.Link as="li">메뉴</Nav.Link></Link>
+            <Link to="/restaurants" className="toplink"><Nav.Link as="li">식당</Nav.Link></Link>
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-        <Navbar.Text>
-          { auth.logged_in ?
-            <Link to="/account"> [ { auth.username } ]님 </Link> :
-            <Link to="/login"> 로그인 </Link>
-          }
-          
-        </Navbar.Text>
-      </Navbar.Collapse>
+          <Nav className="justify-content-end" as="ul">
+            <Link to={ auth.logged_in ? "/account" : "/login"}>
+                {
+                  auth.logged_in ? 
+                  <Nav.Link as="li">[ {auth.username} ] 님 </Nav.Link> : 
+                  <Nav.Link as="li">로그인 </Nav.Link>
+                }
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     )
   }

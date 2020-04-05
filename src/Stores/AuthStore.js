@@ -12,22 +12,27 @@ class AuthStore {
     this.root = root
   }
 
+  @action logout = () => {
+    this.username = ''
+    this.password = ''
+    this.token = false
+    this.error = false
+    this.logged_in = false
+  }
+
   @action setState = (username, password) => {
      this.username = username
      this.password = password
   }
 
-  @action setUsername = e => {
-    const pnew = e.target.value
-    console.log(pnew)
-    this.username = pnew
+  @action setUsername = e => {  this.username = e.target.value }
+  @action setPassword = e => { this.password = e.target.value }
+  
+  @action pageOut = () => {
+    this.password = ''
+    this.error = false
   }
   
-  @action setPassword = e => {
-    const pnew = e.target.value
-    console.log(pnew)
-    this.password = pnew
-  }
   @action reset() { 
     this.username = ''
     this.password = ''

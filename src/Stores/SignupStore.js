@@ -16,16 +16,7 @@ class SignupStore {
     console.log(pnew)
     this.username = pnew
   }
-  @action setPassword1 = e => {
-    const pnew = e.target.value
-    console.log(pnew)
-    this.password1 = pnew
-  }
-  @action setPassword2 = e => {
-    const pnew = e.target.value
-    console.log(pnew)
-    this.password2 = pnew
-  }
+  
   @action reset() { 
     this.username = ''
     this.password1 = ''

@@ -30,7 +30,7 @@ class RestaurantCard extends Component {
   }
   
   getStyle = () => {
-    const c = this.props.restaurant.liked
+    const c = this.props.AuthStore.logged_in && this.props.restaurant.liked
       .some(i => i.username === this.props.AuthStore.username) ? 'red' : 'gray'
     return {color: c}
   }

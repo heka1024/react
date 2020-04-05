@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
+import Api from '../Api'
 import './Account.scss'
 
 @inject(root => ({
@@ -20,6 +21,17 @@ class Account extends Component {
       })
   }
   
+  handleDeleteUser = () => {
+    const { history, auth } = this.props
+    Api.deleteUser(auth.token).then(
+      res => {
+        auth.logout()
+        history.push('/')
+      },
+      err => console.log(err)
+    )
+  }
+  
   render() {
     const { auth } = this.props
     
@@ -31,6 +43,13 @@ class Account extends Component {
           onClick={ this.handleLogout }
           variant="outline-secondary">
           로그아웃
+        </Button>
+        <br/>
+        <br/>
+        <Button 
+          onClick={ this.handleDeleteUser }
+          variant="outline-danger">
+          회원탈퇴
         </Button>
       </div>
     )
